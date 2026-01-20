@@ -1,0 +1,19 @@
+{
+  "name": "csi_api_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:products": "playwright test tests/products.spec.js",
+    "test:users": "playwright test tests/users.spec.js"
+  },
+  "keywords": [],
+  "author": "Eric Goodman",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.9"
+  }
+}
