@@ -1,24 +1,5 @@
-// filepath: /Users/ericgoodman/repo/csi_api_test/utils/generatedDataUtil.js
+import { faker } from '@faker-js/faker';
 
-const PRODUCT_CATEGORIES = ["electronics", "jewelery", "men's clothing", "women's clothing"];
-
-const PRODUCT_NAMES = [
-    "Phone Charger",
-    "Laptop Charger",
-    "USB-C Cable",
-    "Button Up Shirt",
-    "Blue Jeans",
-    "Watch",
-    "Silver Necklace"
-];
-
-const PRODUCT_DESCRIPTIONS = [
-    "High quality and durable product",
-    "Perfect for everyday use",
-    "Premium design with excellent performance",
-    "Reliable and cost-effective solution",
-    "Latest technology with modern features"
-];
 
 async function generateTestProduct(request, id = null) {
     // Get all existing product IDs
@@ -36,17 +17,15 @@ async function generateTestProduct(request, id = null) {
         throw new Error('Provided ID already exists');
     }
 
-    // Generate random product data
-    const randomName = PRODUCT_NAMES[Math.floor(Math.random() * PRODUCT_NAMES.length)];
-    const randomDescription = PRODUCT_DESCRIPTIONS[Math.floor(Math.random() * PRODUCT_DESCRIPTIONS.length)];
+    // Generate random category
+    const PRODUCT_CATEGORIES = ["electronics", "jewelery", "men's clothing", "women's clothing"];
     const randomCategory = PRODUCT_CATEGORIES[Math.floor(Math.random() * PRODUCT_CATEGORIES.length)];
-    const randomPrice = parseFloat((Math.random() * 100 + 10).toFixed(2));
 
     const product = {
         id: productId,
-        title: randomName,
-        price: randomPrice,
-        description: randomDescription,
+        title: faker.commerce.productName(),
+        price: faker.commerce.price({ min: 1, max: 200 }),
+        description: faker.commerce.productDescription() ,
         category: randomCategory,
         image: "http:example.com"
     };
