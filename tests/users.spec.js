@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { getValiduserId } from '../utils/apiUtils.js';
 
 test.describe('Users Page', () => {
 // Get all users
@@ -16,7 +17,7 @@ test.describe('Users Page', () => {
 
 // Get a single user and show their ID, first name and last name.
     test('get single user by id', async ({ request }) => {
-        const userId = 1; // Example user ID
+        const userId = await getValiduserId(request);
         const response = await request.get(`/users/${userId}`);
         expect(response.status()).toBe(200);
         const user = await response.json();

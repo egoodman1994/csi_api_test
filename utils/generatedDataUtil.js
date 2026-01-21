@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-
+// generate a test product with random data
 async function generateTestProduct(request, id = null) {
     // Get all existing product IDs
     const response = await request.get('/products');
